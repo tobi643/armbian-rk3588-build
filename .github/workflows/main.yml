@@ -5,7 +5,14 @@ jobs:
   build-armbian:
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout Armbian build framework"
+        uses: actions/checkout@v4
+        with:
+          repository: armbian/build
+          fetch-depth: 0
+          clean: false
       - uses: armbian/build@main
+        name: "Build Armbian"
         with:
           armbian_token:         "${{ secrets.GITHUB_TOKEN }}"  # GitHub token
           armbian_release:       "jammy"                        # userspace
