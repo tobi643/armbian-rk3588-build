@@ -5,12 +5,6 @@ jobs:
   build-armbian:
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout Armbian build framework"
-        uses: actions/checkout@v4
-        with:
-          repository: armbian/build
-          fetch-depth: 0
-          clean: false
       - uses: armbian/build@v24.8.0-trunk.132
         name: "Build Armbian"
         with:
