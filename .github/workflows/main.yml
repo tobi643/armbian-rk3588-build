@@ -11,7 +11,7 @@ jobs:
           repository: armbian/build
           fetch-depth: 0
           clean: false
-      - uses: armbian/build@main
+      - uses: armbian/build@v24.8.0-trunk.132
         name: "Build Armbian"
         with:
           armbian_token:         "${{ secrets.GITHUB_TOKEN }}"  # GitHub token
