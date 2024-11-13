@@ -5,6 +5,16 @@ jobs:
   build-armbian:
     runs-on: ubuntu-latest
     steps:
+      - name: Maximize build space
+        uses: easimon/maximize-build-space@master
+        with:
+          root-reserve-mb: 512
+          swap-size-mb: 1024
+          remove-dotnet: 'true'
+      - name: Build
+        run: |
+          echo "Free space:"
+          df -h
       - uses: armbian/build@v24.8.0-trunk.132
         name: "Build Armbian"
         with:
@@ -15,4 +25,3 @@ jobs:
           armbian_kernel_branch: "legacy"                       # legacy,vendor,current,edge
           armbian_ui:            "server"
           armbian_extensions:    "v4l2loopback-dkms,mesa-vpu"
-          
